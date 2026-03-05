@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo "Starting the CI process..."
+
+      - name: Check for README
+        run: |
+          if [ -f "README.md" ]; then
+            echo "README.md exists. Great job!"
+          else
+            echo "README.md is missing!"
+            exit 1
+          fi
